@@ -13,6 +13,8 @@ module.exports = {
 		sourceType: 'module',
 	},
 	rules: {
+		"indent": ["error", "tab"],
+		"no-tabs": [0],
 		'arrow-parens': [0],
 		"arrow-body-style": [0],
 		"no-unused-vars": [

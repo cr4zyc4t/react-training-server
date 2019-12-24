@@ -9,6 +9,7 @@ const db = new Sequelize('task-manager', null, null, {
 });
 
 const TaskModel = db.define('task', {
+	token: { type: Sequelize.STRING },
 	title: { type: Sequelize.STRING },
 	desc: { type: Sequelize.STRING },
 	is_completed: { type: Sequelize.BOOLEAN },
@@ -21,5 +22,5 @@ function connect() {
 
 module.exports = {
 	connect,
-	TaskModel: db.models.task,
+	TaskModel,
 };
