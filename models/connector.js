@@ -4,16 +4,16 @@ const path = require('path');
 const db = new Sequelize('task-manager', null, null, {
 	dialect: 'sqlite',
 	storage: path.resolve(process.cwd(), 'db/task-manager.sqlite'),
-	logging: true,
-	operatorsAliases: false,
+	logging: false,
+	operatorsAliases: 0,
 });
 
 const TaskModel = db.define('task', {
-	token: { type: Sequelize.STRING },
-	title: { type: Sequelize.STRING },
-	desc: { type: Sequelize.STRING },
-	is_completed: { type: Sequelize.BOOLEAN },
-	complete_time: { type: Sequelize.BIGINT },
+	token: { type: Sequelize.STRING, allowNull: false },
+	title: { type: Sequelize.STRING, allowNull: false },
+	desc: { type: Sequelize.STRING, allowNull: false },
+	is_completed: { type: Sequelize.BOOLEAN, allowNull: false },
+	completed_time: { type: Sequelize.BIGINT, allowNull: false },
 });
 
 function connect() {
