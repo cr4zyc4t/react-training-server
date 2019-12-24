@@ -1,0 +1,26 @@
+{
+  "name": "react-training-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cr4zyc4t/react-training-server.git"
+  },
+  "author": "ToanVQ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cr4zyc4t/react-training-server/issues"
+  },
+  "homepage": "https://github.com/cr4zyc4t/react-training-server#readme",
+  "description": "",
+  "dependencies": {
+    "@cr4zyc4t/eslint-config-common": "^1.0.4",
+    "eslint-config-airbnb": "^18.0.1",
+    "express": "^4.17.1",
+    "sequelize": "^5.21.3",
+    "sqlite3": "^4.1.1"
+  }
+}
