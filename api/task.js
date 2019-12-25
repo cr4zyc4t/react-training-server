@@ -8,8 +8,9 @@ router.get('/', (req, res) => {
 	const token = req.token;
 	TaskModel.findAll({
 		where: {
-			token,
+			creator: token,
 		},
+		attributes: ['title', 'is_completed']
 	}).then(result => {
 		res.json({
 			ok: true,
@@ -31,7 +32,7 @@ router.get('/:id', (req, res) => {
 	const token = req.token;
 	TaskModel.findAll({
 		where: {
-			token,
+			creator: token,
 			id,
 		},
 	}).then(result => {
@@ -62,8 +63,8 @@ function validateTask({
 	if (typeof is_completed !== 'boolean') {
 		return 'is_completed must be boolean';
 	}
-	if (typeof completed_time !== 'number' || completed_time <= 0) {
-		return 'completed_time must be positive number';
+	if ((completed_time != undefined && typeof completed_time !== 'number') || (typeof completed_time === 'number' && completed_time <= 0)) {
+		return 'If present, completed_time must be positive number';
 	}
 	return true;
 }
@@ -82,7 +83,10 @@ router.post('/', async (req, res) => {
 		return;
 	}
 	const token = req.token;
-	const [result, error] = await handlePromise(TaskModel.create({ ...params, token }));
+	const [result, error] = await handlePromise(TaskModel.create({
+		...params,
+		creator: token
+	}));
 	if (error) {
 		res.json({
 			ok: false,
@@ -114,7 +118,7 @@ router.patch('/:id', async (req, res) => {
 		return;
 	}
 	const token = req.token;
-	TaskModel.findOne({ where: { id, token } })
+	TaskModel.findOne({ where: { id, creator: token } })
 		.then(result => {
 			if (result === null) {
 				return Promise.reject(new Error('Item not found'));
