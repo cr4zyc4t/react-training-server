@@ -13,7 +13,7 @@ module.exports = {
 
 	deploy: {
 		production: {
-			user: 'toanvq',
+			user: 'ubuntu',
 			key: '/Users/toanvq/Documents/Keys/ubuntu@my-aws-ec2.pem',
 			host: '52.77.254.77',
 			ref: 'origin/master',
