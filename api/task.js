@@ -103,7 +103,7 @@ router.post('/', async (req, res) => {
 	});
 });
 
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', (req, res) => {
 	const id = req.params.id;
 	const params = req.body;
 	const validate_result = validateTask(params);
@@ -143,7 +143,7 @@ router.patch('/:id', async (req, res) => {
 		});
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', (req, res) => {
 	const id = req.params.id;
 	const token = req.token;
 	TaskModel.destroy({ where: { id, creator: token } })
