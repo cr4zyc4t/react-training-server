@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 		where: {
 			creator: token,
 		},
-		attributes: ['title', 'is_completed']
+		attributes: ['id', 'title', 'is_completed']
 	}).then(result => {
 		res.json({
 			ok: true,
@@ -130,6 +130,27 @@ router.patch('/:id', async (req, res) => {
 			res.json({
 				ok: true,
 				result: result.toJSON(),
+			});
+		})
+		.catch(error => {
+			res.json({
+				ok: false,
+				error: {
+					name: error.name,
+					message: error.message,
+				},
+			});
+		});
+});
+
+router.delete('/:id', async (req, res) => {
+	const id = req.params.id;
+	const token = req.token;
+	TaskModel.destroy({ where: { id, creator: token } })
+		.then(result => {
+			res.json({
+				ok: true,
+				result, // number of deleted records
 			});
 		})
 		.catch(error => {
