@@ -4,7 +4,7 @@ const { connect: connectDB } = require('./models/connector');
 const taskRouter = require('./api/task');
 
 const app = express();
-const port = 4000;
+const port = parseInt(process.env.PORT, 10) || 4000;
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
