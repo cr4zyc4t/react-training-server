@@ -19,7 +19,7 @@ module.exports = {
 			ref: 'origin/master',
 			repo: 'https://github.com/cr4zyc4t/react-training-server.git',
 			path: '/home/ubuntu/training-api-server',
-			'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
+			'post-deploy': 'yarn && pm2 reload ecosystem.config.js --env production',
 		},
 	},
 };
