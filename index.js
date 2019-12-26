@@ -11,21 +11,26 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true,
 }));
 
+// eslint-disable-next-line consistent-return
 app.use('/tasks', (req, res, next) => {
-	const token = req.header('Authorization');
-	if (!token) {
-		res.status(401);
-		res.json({
-			ok: false,
-			error: {
-				name: 'Authorization error',
-				message: 'No token in header',
-			},
-		});
-		return;
+	// parse login and password from headers
+	const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
+	const [login, password] = Buffer.from(b64auth, 'base64').toString().split(':');
+
+	// Verify login and password are set and correct
+	if (login && password && login === password) {
+		req.token = login;
+		return next();
 	}
-	req.token = token;
-	next();
+
+	res.status(401);
+	res.json({
+		ok: false,
+		error: {
+			name: 'Authentication error',
+			message: 'Authentication required',
+		},
+	});
 }, taskRouter);
 app.get('/', (req, res) => res.send('Hello World!'));
 

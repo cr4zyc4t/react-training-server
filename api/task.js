@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 		where: {
 			creator: token,
 		},
-		attributes: ['id', 'title', 'is_completed']
+		attributes: ['id', 'title', 'is_completed'],
 	}).then(result => {
 		res.json({
 			ok: true,
@@ -85,7 +85,7 @@ router.post('/', async (req, res) => {
 	const token = req.token;
 	const [result, error] = await handlePromise(TaskModel.create({
 		...params,
-		creator: token
+		creator: token,
 	}));
 	if (error) {
 		res.json({
