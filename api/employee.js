@@ -1,4 +1,5 @@
 const express = require('express');
+const faker = require('faker');
 
 const router = express.Router();
 
@@ -7,13 +8,13 @@ router.get('/', (req, res) => {
 		res.json([
 			{
 				id: 1,
-				employee_name: "Mrs. Janessa Hackett",
+				employee_name: faker.name.findName(),
 			},
 			{
 				id: 2,
-				employee_name: "Dr. Orie Ernser",
-			}
-		])
+				employee_name: faker.name.findName(),
+			},
+		]);
 	}, 2000);
 });
 
