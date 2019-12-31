@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const { connect: connectDB } = require('./models/connector');
 const taskRouter = require('./api/task');
 const emRouter = require('./api/employee');
+const cors = require('cors');
 
 const app = express();
 const port = parseInt(process.env.PORT, 10) || 4000;
@@ -11,7 +12,7 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
 	extended: true,
 }));
-
+app.use(cors());
 // eslint-disable-next-line consistent-return
 app.use('/tasks', (req, res, next) => {
 	// parse login and password from headers
