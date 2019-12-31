@@ -27,5 +27,6 @@ module.exports = {
 		],
 		'prefer-destructuring': [0],
 		'camelcase': [0],
-	},
+		"consistent-return": [0]
+	}
 };
