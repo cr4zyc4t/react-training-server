@@ -29,10 +29,10 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 	const id = req.params.id;
-	const token = req.token;
+	// const token = req.token;
 	TaskModel.findAll({
 		where: {
-			creator: token,
+			// creator: token,
 			id,
 		},
 	}).then(result => {
