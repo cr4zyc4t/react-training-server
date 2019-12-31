@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { connect: connectDB } = require('./models/connector');
 const taskRouter = require('./api/task');
+const emRouter = require('./api/employee');
 
 const app = express();
 const port = parseInt(process.env.PORT, 10) || 4000;
@@ -32,6 +33,7 @@ app.use('/tasks', (req, res, next) => {
 		},
 	});
 }, taskRouter);
+app.use('/employees', emRouter)
 app.get('/', (req, res) => res.send('Hello World!'));
 
 function startApp() {
