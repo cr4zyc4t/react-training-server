@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 				employee_name: faker.name.findName(),
 			},
 		]);
-	}, 2000);
+	}, 500);
 });
 
 module.exports = router;
