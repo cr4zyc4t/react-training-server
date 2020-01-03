@@ -5,11 +5,11 @@ const { TaskModel } = require('../models/connector');
 const { handlePromise } = require('../utils');
 
 router.get('/', (req, res) => {
-	// const token = req.token;
+	const token = req.token;
 	TaskModel.findAll({
-		// where: {
-		// 	creator: token,
-		// },
+		where: {
+			creator: token,
+		},
 		attributes: ['id', 'title', 'is_completed'],
 	}).then(result => {
 		res.json({
@@ -29,10 +29,10 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 	const id = req.params.id;
-	// const token = req.token;
+	const token = req.token;
 	TaskModel.findAll({
 		where: {
-			// creator: token,
+			creator: token,
 			id,
 		},
 	}).then(result => {
@@ -126,7 +126,6 @@ router.patch('/:id', (req, res) => {
 			return result.update({ ...params });
 		})
 		.then(result => {
-			console.log('TCL: result', result);
 			res.json({
 				ok: true,
 				result: result.toJSON(),
