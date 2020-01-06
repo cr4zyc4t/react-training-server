@@ -13,7 +13,7 @@ module.exports = {
 
 	deploy: {
 		production: {
-			user: 'ubuntu',
+			user: 'toanvq',
 			key: 'D:\\Documents\\toanvq\@199',
 			host: '10.116.224.199',
 			ref: 'origin/master',
