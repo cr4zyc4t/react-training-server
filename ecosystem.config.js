@@ -7,18 +7,18 @@ module.exports = {
 		},
 		env_production: {
 			NODE_ENV: 'production',
-			PORT: 3010,
+			PORT: 4000,
 		},
 	}],
 
 	deploy: {
 		production: {
 			user: 'ubuntu',
-			key: '/Users/toanvq/Documents/Keys/ubuntu@my-aws-ec2.pem',
-			host: '52.77.254.77',
+			key: 'D:\\Documents\\toanvq\@199',
+			host: '10.116.224.199',
 			ref: 'origin/master',
 			repo: 'https://github.com/cr4zyc4t/react-training-server.git',
-			path: '/home/ubuntu/projects/training-api-server',
+			path: '/home/toanvq/Workspace/react-training-server',
 			'post-deploy': 'yarn install && pm2 reload ecosystem.config.js --env production',
 		},
 	},
