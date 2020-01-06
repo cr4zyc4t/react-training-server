@@ -14,7 +14,7 @@ module.exports = {
 	deploy: {
 		production: {
 			user: 'toanvq',
-			key: 'D:\\Documents\\toanvq\@199',
+			key: 'D:/Documents/toanvq\@199',
 			host: '10.116.224.199',
 			ref: 'origin/master',
 			repo: 'https://github.com/cr4zyc4t/react-training-server.git',
